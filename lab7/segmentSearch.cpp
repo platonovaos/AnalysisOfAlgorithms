@@ -81,12 +81,25 @@ void sortSegments(Segment segmentArray[], const int numSegments)
 
 int findInSegment(const Segment segment, const string searchStr)
 {
+    int left = 0, middle = 0, right = segment.Size;
     int res = -1;
 
-    for (int i = 0; i < segment.Size; i++) {
-        if (segment.Words[i] == searchStr) {
-            res = segment.OriginalIdx[i];
-            break;
+    while (left < right) {
+        middle = (left + right) / 2;
+
+        string dStr = segment.Words[middle];
+
+        if (searchStr < dStr) {
+            right = middle;
+        } else {
+            if (searchStr == dStr) {
+                res = segment.OriginalIdx[middle];
+                break;
+            } else {
+                if (searchStr > dStr) {
+                    left = middle + 1;
+                }
+            }
         }
     }
 

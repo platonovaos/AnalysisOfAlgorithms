@@ -60,7 +60,7 @@ long measureSeg(const Dictionary dict, const string searchStr)
     time_t begin = clock();
 
     for (int i = 0; i < numRepeats; i++) {
-        return segmentSearch(dict, searchStr);
+        segmentSearch(dict, searchStr);
     }
 
     time_t end = clock();
