@@ -5,22 +5,29 @@ const int numRepeats = 100;
 
 void timeMeasurments()
 {
-    cout << "_________________Time________________" << endl << endl;
-    cout << "Standart | KMP | BM" << endl;
-    cout << "-------------------------------------" << endl;
+    cout << "_____________Time___________" << endl << endl;
+    cout << "Length | Standart | KMP | BM" << endl;
+    cout << "----------------------------" << endl;
 
-    measure("abcdaeedjhka;jdhfkjvb;aaekjfablbvkasdhbclhe", "aee");
+    string fullStr = "thisisafullstr";
+
+    for (int i = 0; i < 15; i++) {
+        measure(fullStr, "afull");
+        fullStr += fullStr;
+    }
 
     cout << endl << endl;
 }
 
 void measure(const string fullStr, const string partStr)
 {
-    cout << setw(8) << measureStandart(fullStr, partStr);
-    cout << setw(11) << measureKMP(fullStr, partStr);
-    cout << setw(11) << measureBM(fullStr, partStr) << endl;
+    cout << fullStr.size();
 
-    cout << "-------------------------------------" << endl;
+    cout << setw(12) << measureStandart(fullStr, partStr);
+    cout << setw(8) << measureKMP(fullStr, partStr);
+    cout << setw(6) << measureBM(fullStr, partStr) << endl;
+
+    cout << "----------------------------" << endl;
 }
 
 long measureStandart(const string fullStr, const string partStr)

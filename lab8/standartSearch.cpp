@@ -7,7 +7,7 @@ int standartSearch(const string fullStr, const string partStr)
     int lenFull = defineLength(fullStr);
     int lenPart = defineLength(partStr);
 
-    for (int i = 0; i < lenFull - lenPart; i++) {
+    for (int i = 0; i <= lenFull - lenPart; i++) {
         bool areEqual = true;
 
         for (int j = 0; j < lenPart && areEqual; j++) {

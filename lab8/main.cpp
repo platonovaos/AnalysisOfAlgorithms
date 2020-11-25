@@ -20,8 +20,12 @@ void menu()
     cin >> fChoose;
     if (fChoose == 1) {
 
-        const string fullStr = "This is a full string";
+        /*const string fullStr = "This is a full string";
         const string partStr = "full";
+        */
+
+        const string fullStr = inputString("Input full string: ");
+        const string partStr = inputString("Input substring: ");
 
         int choose = 0;
 
