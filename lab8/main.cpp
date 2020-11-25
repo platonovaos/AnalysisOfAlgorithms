@@ -1,8 +1,4 @@
-//#include "timeMeasurments.h"
-#include "standartSearch.h"
-#include "kmpSearch.h"
-#include "bmSearch.h"
-
+#include "timeMeasurments.h"
 
 const int exitCode = 4;
 
@@ -59,7 +55,7 @@ void menu()
         }
     }
 
-    /*if (fChoose == 2) {
-        timeMeasurments(dict);
-    }*/
+    if (fChoose == 2) {
+        timeMeasurments();
+    }
 }

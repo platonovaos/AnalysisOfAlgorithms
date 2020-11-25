@@ -4,8 +4,8 @@ int kmpSearch(const string fullStr, const string partStr)
 {
     int res = -1;
 
-    int lenFull = fullStr.size();
-    int lenPart = partStr.size();
+    int lenFull = static_cast<int>(fullStr.size());
+    int lenPart = static_cast<int>(partStr.size());
 
     int* prefix = definePrefix(partStr);
     int lastPrefix = 0;
@@ -31,7 +31,7 @@ int kmpSearch(const string fullStr, const string partStr)
 
 int* definePrefix(const string str)
 {
-    int len = str.size();
+    int len = static_cast<int>(str.size());
 
     int* prefix = new int[len];
     prefix[0] = 0;

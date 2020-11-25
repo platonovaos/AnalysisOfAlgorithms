@@ -8,10 +8,12 @@ SOURCES += \
     standartSearch.cpp \
     strFunc.cpp \
     kmpSearch.cpp \
-    bmSearch.cpp
+    bmSearch.cpp \
+    timeMeasurments.cpp
 
 HEADERS += \
     standartSearch.h \
     strFunc.h \
     kmpSearch.h \
-    bmSearch.h
+    bmSearch.h \
+    timeMeasurments.h

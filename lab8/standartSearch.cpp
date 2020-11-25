@@ -9,11 +9,13 @@ int standartSearch(const string fullStr, const string partStr)
 
     for (int i = 0; i < lenFull - lenPart; i++) {
         bool areEqual = true;
+
         for (int j = 0; j < lenPart && areEqual; j++) {
             if (fullStr[i + j] != partStr[j]) {
                 areEqual = false;
             }
         }
+
         if (areEqual == true) {
             res = i;
             break;
