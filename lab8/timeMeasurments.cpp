@@ -1,4 +1,3 @@
-#include <iomanip>
 #include "timeMeasurments.h"
 
 const int numRepeats = 100;

@@ -1,6 +1,7 @@
 #ifndef STRFUNC_H
 #define STRFUNC_H
 
+#include <iomanip>
 #include <iostream>
 using namespace std;
 
