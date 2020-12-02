@@ -8,7 +8,7 @@ const int numLines = 3;
 const int numTasks = 5;
 
 static queue<int> queue1, queue2, queue3;
-static mutex mutexQ1, mutexQ2, mutexQ3, mutexRes;
+static mutex mutex1, mutex2, mutex3;
 static vector<int> dataRes;
 
 void firstConveyor()
@@ -19,19 +19,19 @@ void firstConveyor()
             continue;
         }
 
-        mutexQ1.lock();
+        mutex1.lock();
             int task = queue1.front();
             queue1.pop();
-        mutexQ1.unlock();
+        mutex1.unlock();
 
         time_t begin = clock();
             this_thread::sleep_for(chrono::seconds(3));
         time_t end = clock();
         conveyorOutput(1, task, begin, end);
 
-        mutexQ2.lock();
+        mutex2.lock();
             queue2.push(task);
-        mutexQ2.unlock();
+        mutex2.unlock();
 
         n++;
     }
@@ -45,19 +45,19 @@ void secondConveyor()
             continue;
         }
 
-        mutexQ2.lock();
+        mutex2.lock();
             int task = queue2.front();
             queue2.pop();
-        mutexQ2.unlock();
+        mutex2.unlock();
 
         time_t begin = clock();
             this_thread::sleep_for(chrono::seconds(1));
         time_t end = clock();
         conveyorOutput(2, task, begin, end);
 
-        mutexQ3.lock();
+        mutex3.lock();
             queue3.push(task);
-        mutexQ3.unlock();
+        mutex3.unlock();
 
         n++;
     }
@@ -71,19 +71,17 @@ void thirdConveyor()
             continue;
         }
 
-        mutexQ3.lock();
+        mutex3.lock();
             int task = queue3.front();
             queue3.pop();
-        mutexQ3.unlock();
+        mutex3.unlock();
 
         time_t begin = clock();
             this_thread::sleep_for(chrono::seconds(2));
         time_t end = clock();
         conveyorOutput(3, task, begin, end);
 
-        mutexRes.lock();
-            dataRes.push_back(task);
-        mutexRes.unlock();
+        dataRes.push_back(task);
 
         n++;
     }
@@ -93,13 +91,14 @@ int main()
 {
     vector<int> data = generateData(numTasks);
 
-    for (int i = 0; i < numTasks; i++) {
-        mutexQ1.lock();
-            queue1.push(data[i]);
-        mutexQ1.unlock();
-    }
-
     clock_t begin = clock();
+
+    //Заполнение первой очереди
+    for (int i = 0; i < numTasks; i++) {
+        mutex1.lock();
+            queue1.push(data[i]);
+        mutex1.unlock();
+    }
 
     thread t1(firstConveyor);
     thread t2(secondConveyor);
