@@ -6,9 +6,7 @@ QMAKE_LFLAGS += -pthread
 
 SOURCES += \
         main.cpp \
-    func.cpp \
-    conveyor.cpp
+    func.cpp
 
 HEADERS += \
-    func.h \
-    conveyor.h
+    func.h
