@@ -11,7 +11,7 @@ static queue<int> queue1, queue2, queue3;
 static mutex mutex1, mutex2, mutex3;
 static vector<int> dataRes;
 
-void firstConveyor()
+void firstLine()
 {
     int n = 0;
     while (n < numTasks) {
@@ -37,7 +37,7 @@ void firstConveyor()
     }
 }
 
-void secondConveyor()
+void secondLine()
 {
     int n = 0;
     while (n < numTasks) {
@@ -63,7 +63,7 @@ void secondConveyor()
     }
 }
 
-void thirdConveyor()
+void thirdLine()
 {
     int n = 0;
     while (n < numTasks) {
@@ -100,9 +100,9 @@ int main()
         mutex1.unlock();
     }
 
-    thread t1(firstConveyor);
-    thread t2(secondConveyor);
-    thread t3(thirdConveyor);
+    thread t1(firstLine);
+    thread t2(secondLine);
+    thread t3(thirdLine);
 
     t1.join();
     t2.join();
