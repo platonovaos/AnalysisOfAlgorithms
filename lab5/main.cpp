@@ -5,11 +5,11 @@
 #include "func.h"
 
 const int numLines = 3;
-const int numTasks = 5;
+const int numTasks = 4;
 
 static queue<int> queue1, queue2, queue3;
 static mutex mutex1, mutex2, mutex3;
-static vector<int> dataRes;
+static vector<int> objResPool;
 
 void firstLine()
 {
@@ -81,7 +81,7 @@ void thirdLine()
         time_t end = clock();
         conveyorOutput(3, task, begin, end);
 
-        dataRes.push_back(task);
+        objResPool.push_back(task);
 
         n++;
     }
@@ -89,14 +89,14 @@ void thirdLine()
 
 int main()
 {
-    vector<int> data = generateData(numTasks);
+    vector<int> objects = generateData(numTasks);
 
     clock_t begin = clock();
 
     //Заполнение первой очереди
     for (int i = 0; i < numTasks; i++) {
         mutex1.lock();
-            queue1.push(data[i]);
+            queue1.push(objects[i]);
         mutex1.unlock();
     }
 
@@ -109,7 +109,13 @@ int main()
     t3.join();
 
     clock_t end = clock();
-    cout << "Time: " << end - begin << endl;
+
+    cout << "\nResulted pool: ";
+    for (int i = 0; i < objResPool.size(); i++) {
+        cout << objResPool[i] << " ";
+    }
+
+    cout << "\nTime: " << end - begin << endl;
 
     return 0;
 }
